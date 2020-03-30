@@ -2,11 +2,15 @@
 
 ## Quickstart
 ```sh
-docker run -it --rm -p 127.0.0.1:80:3000 -p 127.0.0.1:9630:9630 -v "$(pwd)":/usr/src/app -w /usr/src/app suud/cljs bash
-lein new reagent hello-world --to-dir "$(pwd)" --force -- +shadow-cljs
-# or lein new re-frame hello-world --to-dir "$(pwd)" --force -- +10x +re-frisk
-lein deps # retrieves dependencies
-npm install # or yarn install
+# re-frame
+docker run -it --rm -p 127.0.0.1:80:8280 -p 127.0.0.1:9630:9630 -v "$(pwd)":/usr/src/app -w /usr/src/app suud/cljs bash
+lein new re-frame hello-world --to-dir "$(pwd)" --force -- +10x
+# Alternative: Reagent
+# docker run -it --rm -p 127.0.0.1:80:3000 -p 127.0.0.1:9630:9630 -v "$(pwd)":/usr/src/app -w /usr/src/app suud/cljs bash
+# lein new reagent hello-world --to-dir "$(pwd)" --force -- +shadow-cljs
+
+lein deps
+npm install
 shadow-cljs watch app
 ```
 
@@ -20,10 +24,17 @@ or browse the [Shadow CLJS User Guide](https://shadow-cljs.github.io/docs/UsersG
 ### Setup new cljs project
 
 ```sh
-# create lein project based on reagent template, compatible with shadow-cljs
-lein new reagent hello-world +shadow-cljs
+# create lein project based on re-frame template
+lein new re-frame hello-world
+# you can use optional profiles:
+# lein new re-frame hello-world +10x +routes
 ```
-[more flags](https://github.com/reagent-project/reagent-template#usage)
+[optional profiles](https://github.com/day8/re-frame-template#extras)
+
+
+You might want to use the [Reagent Template](https://github.com/reagent-project/reagent-template#usage), instead.
+Keep in mind that Reagent uses `3000` as default port for it's webserver while re-frame uses `8280`.
+`+shadow-cljs` is required when using Reagent.
 
 ### Create `Dockerfile`
 ```yaml
@@ -52,7 +63,7 @@ app:
     - .:/usr/src/app
   ports:
     # web server
-    - 127.0.0.1:80:3000
+    - 127.0.0.1:80:8280
     # shadow-cljs http and websocket
     - 127.0.0.1:9630:9630
 #    # nrepl

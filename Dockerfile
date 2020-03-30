@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -qq \
 # install shadow-cljs
 	npm install -g shadow-cljs
 
-# default web server port
-EXPOSE 3000
+# default reagent web server port
+#EXPOSE 3000
+# default re-frame web server port
+EXPOSE 8280
 # shadow-cljs's default http and websocket port
 EXPOSE 9630
