@@ -110,7 +110,9 @@ attached to with `docker-compose run --rm app bash`
 Build a release that is optimized for production use:
 ```sh
 lein clean
-#lein sassc once # build css
+# if using sass
+#lein sassc clean
+#lein sassc once
 shadow-cljs release app
 ```
 When no `:output-dir` is configured in the `shadow-cljs.edn`, the build will be
