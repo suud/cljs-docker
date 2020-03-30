@@ -11,6 +11,7 @@ lein new re-frame hello-world --to-dir "$(pwd)" --force -- +10x
 
 lein deps
 npm install
+#lein sassc once # build css
 shadow-cljs watch app
 ```
 
@@ -70,6 +71,28 @@ app:
 #    - 127.0.0.1:9000:9000
 ```
 
+### (optional) Add Sass support
+Create a `sass/mystyles.scss` file that contains your custom styles.
+
+In the `project.clj` file, add the following:
+```
+    :plugins [...
+              [lein-sassc "0.10.5"]]
+
+    :sassc [{:src         "sass/mystyles.scss"
+             :output-to   "resources/public/css/mystyles.css"
+             :style       "nested"
+             :import-path "sass"}]
+```
+
+Inside the `<head>` of `resources/public/index.html` add the following:
+```
+<link rel="stylesheet" href="css/mystyles.css">
+```
+
+You will need to manually run `lein sassc once` to rebuild your CSS file
+when you have changes.
+
 ## Development Workflow
 - deploy application: `docker-compose up -d`
     - application HTTP server: `http://localhost:80`
@@ -80,7 +103,7 @@ from the host system. You might loose your changes if you modify files inside
 the container and a directory isn't mounted correctly.
 - A temporary second instance of a service's container can be started and
 attached to with `docker-compose run --rm app bash`
-    - you might use that to create a production build
+    - you might use that to create a production build or build custom css files
 
 ## Build for Production
 
