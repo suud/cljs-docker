@@ -1,8 +1,7 @@
 FROM clojure
 
 RUN apt-get update && apt-get install -qq \
-    sassc && \
-    curl && \
+    sassc curl && \
 # install nodejs 13
     curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
 	apt-get install -y nodejs && \
