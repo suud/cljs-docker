@@ -4,9 +4,17 @@
 ```sh
 docker run -it --rm -p 127.0.0.1:80:3000 -p 127.0.0.1:9630:9630 -v "$(pwd)":/usr/src/app -w /usr/src/app suud/cljs bash
 lein new reagent hello-world --to-dir "$(pwd)" --force -- +shadow-cljs
-npm install react react-dom
+# or lein new re-frame hello-world --to-dir "$(pwd)" --force -- +10x +re-frisk
+lein deps # retrieves dependencies
+npm install # or yarn install
 shadow-cljs watch app
 ```
+
+To see other available `shadow-cljs` commands run:
+```sh
+shadow-cljs --help
+```
+or browse the [Shadow CLJS User Guide](https://shadow-cljs.github.io/docs/UsersGuide.html).
 
 ## Prerequisites
 ### Setup new cljs project
