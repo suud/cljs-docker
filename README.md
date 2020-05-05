@@ -1,4 +1,6 @@
-# cljs
+# [cljs project boilerplate](https://github.com/suud/cljs-docker/)
+![Docker Automated build](https://img.shields.io/docker/automated/suud/cljs)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/suud/cljs)
 
 ## Quickstart
 ```sh
@@ -105,6 +107,7 @@ the container and a directory isn't mounted correctly.
 attached to with `docker-compose run --rm app bash`
     - you might use that to create a production build or build custom css files
 
+
 ## Build for Production
 
 Build a release that is optimized for production use:
@@ -118,8 +121,6 @@ shadow-cljs release app
 When no `:output-dir` is configured in the `shadow-cljs.edn`, the build will be
 saved under `public/js`.
 
-# Become my caffeine sponsor
-<a href="https://www.buymeacoffee.com/suud" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-orange.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
 
 # License
 This repository is released under the
