@@ -2,9 +2,9 @@ FROM clojure
 
 RUN apt-get update && apt-get install -qq \
     sassc curl && \
-# install nodejs 13
-    curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
-	apt-get install -y nodejs && \
+# install nodejs 14
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs && \
 # install shadow-cljs
 	npm install -g shadow-cljs
 
