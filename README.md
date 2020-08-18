@@ -57,7 +57,7 @@ CMD shadow-cljs watch app
 app:
   build: .
   volumes:
-    - .:/usr/src/app
+    - .:/app
   ports:
     # web server
     - 127.0.0.1:80:8080
