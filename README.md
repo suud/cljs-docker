@@ -4,7 +4,7 @@
 
 ## Quickstart
 ```sh
-docker run -v "$(pwd)":/app \
+docker run -v "$(pwd)":/app -w /app \
            -it \
            --rm \
            -p 127.0.0.1:80:8080 \
