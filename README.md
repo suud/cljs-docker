@@ -37,11 +37,6 @@ You can use [this guide](https://github.com/thheller/shadow-cljs#quick-start).
 ```yaml
 FROM suud/cljs
 
-## nrepl port (has to be configured in shadow-cljs.edn)
-## see: https://shadow-cljs.github.io/docs/UsersGuide.html#nREPL
-#EXPOSE 9000
-
-
 WORKDIR /app
 
 COPY package.json .
@@ -61,10 +56,8 @@ app:
   ports:
     # web server
     - 127.0.0.1:80:8080
-    # shadow-cljs http and websocket
+    # shadow-cljs dashboard
     - 127.0.0.1:9630:9630
-#    # nrepl
-#    - 127.0.0.1:9000:9000
 ```
 
 ## Development Workflow
@@ -76,7 +69,7 @@ app:
 from the host system. You might loose your changes if you modify files inside
 the container and a directory isn't mounted correctly.
 - A temporary second instance of a service's container can be started and attached to with `docker-compose run --rm app bash`
-    - you might use that to build css files or connect a REPL
+    - you might use that to build css files or connect to a REPL
 
 
 ## Build for Production
